@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Serena - Control de Citas</title>
+    <style>
+        :root { 
+            --verde-lima: #9acd32; 
+            --azul-primario: #1e4d6b; 
+            --azul-claro: #f0f7f9; 
+            --gris-oscuro: #2b2d42; 
+            --gris-claro: #f8f9fa; 
+            --blanco: #ffffff; 
+            
+            --amarillo-formulario: #f4c430;
+            --amarillo-focus: rgba(244, 196, 48, 0.3);
+            --amarillo-hover: #deb322;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        .header-container *, table, th, td, footer * { border-radius: 0 !important; }
+        
+        body { background-color: var(--gris-claro); color: var(--gris-oscuro); display: flex; flex-direction: column; min-height: 100vh; }
+        
+        header { background-color: var(--verde-lima); position: fixed; top: 0; left: 0; width: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.1); z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 15px 20px; }
+        .logo { font-size: 26px; font-weight: 700; color: var(--azul-primario); }
+        .logo span { color: var(--blanco); font-weight: 400; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; }
+        nav a:hover, nav a.active { color: var(--blanco); }
+
+        .cuerpo { flex: 1; max-width: 1200px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+        
+        .document-section { background-color: var(--blanco); padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; }
+        .document-section p { color: #70757a; margin-bottom: 25px; }
+
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; border: 1px solid #e9ecef; white-space: nowrap; }
+        th, td { padding: 14px 18px; border-bottom: 1px solid #e9ecef; }
+        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
+        tr:hover { background-color: #fdfefe; }
+        
+        .id-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 14px; }
+        
+        .form-container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            width: 100%; 
+            background: var(--blanco); 
+            padding: 35px; 
+            border: 1px solid #e2e8f0; 
+            border-top: 6px solid var(--amarillo-formulario); 
+            box-shadow: 0 8px 24px rgba(244, 196, 48, 0.15); 
+            border-radius: 12px; 
+        }
+        .form-group { margin-bottom: 22px; }
+        
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; }
+        
+        input[type="text"], input[type="number"], input[type="email"], select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #e0d0dd; 
+            font-size: 14px; 
+            background-color: #faf7fa; 
+            color: #333; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+        }
+        input:focus, select:focus { outline: none; border-color: var(--amarillo-formulario); background-color: #fff; box-shadow: 0 0 5px var(--amarillo-focus); }
+
+        .btn-submit { 
+            background-color: var(--amarillo-formulario); 
+            color: var(--gris-oscuro); 
+            border: none; 
+            padding: 14px 15px; 
+            width: 100%; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            margin-top: 10px; 
+            border-radius: 6px; 
+        }
+        .btn-submit:hover { background-color: var(--amarillo-hover); }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+        .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">Hospital <span>Serena</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pacientes.html">Pacientes</a></li>
+                    <li><a href="personal.html">Personal</a></li>
+                    <li><a href="citas.html" class="active">Citas</a></li>
+                    <li><a href="urgencias.html">Urgencias</a></li>
+                    <li><a href="farmacia.html">Farmacia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cuerpo">
+        <section class="document-section">
+            <h2>Consultas Programadas</h2>
+            <p>Asignación de consultorios y organización de horarios.</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_citas</th>
+                            <th>Paciente Asignado</th>
+                            <th>Médico Especialista</th>
+                            <th>Fecha y Horario</th>
+                            <th>Consultorio de Atención</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="id-sector">CIT_01</td><td>Andrés Mendoza</td><td>Dr. Adrián Seraphim</td><td>2026-05-26 08:30</td><td>Cons. 12 - Piso 1</td></tr>
+                        <tr><td class="id-sector">CIT_02</td><td>Laura Quintanilla</td><td>Dra. Irene Valis</td><td>2026-05-26 09:15</td><td>Cons. 05 - Infantil</td></tr>
+                        <tr><td class="id-sector">CIT_03</td><td>Enrique Bunbury</td><td>Dr. Samuel Cresta</td><td>2026-05-26 10:00</td><td>Cons. 22 - Piso 2</td></tr>
+                        <tr><td class="id-sector">CIT_04</td><td>Marta Sánchez</td><td>Dra. Valeria Solano</td><td>2026-05-26 11:00</td><td>Cons. 01 - PB</td></tr>
+                        <tr><td class="id-sector">CIT_05</td><td>Carlos Baute</td><td>Dr. Gabriel Pax</td><td>2026-05-26 12:00</td><td>Cons. 30 - Salud M.</td></tr>
+                        <tr><td class="id-sector">CIT_06</td><td>Julia Roberts</td><td>Dra. Amara Lind</td><td>2026-05-27 08:00</td><td>Cons. 14 - Piso 1</td></tr>
+                        <tr><td class="id-sector">CIT_07</td><td>Pedro Almodóvar</td><td>Dr. Roberto Shin</td><td>2026-05-27 09:30</td><td>Cons. 18 - Piso 2</td></tr>
+                        <tr><td class="id-sector">CIT_08</td><td>Cecilia Roth</td><td>Dra. Celia Cruzado</td><td>2026-05-27 10:45</td><td>Cons. 08 - PB</td></tr>
+                        <tr><td class="id-sector">CIT_09</td><td>Ricardo Darín</td><td>Dr. Julián Merino</td><td>2026-05-27 11:30</td><td>Cons. 11 - Piso 1</td></tr>
+                        <tr><td class="id-sector">CIT_10</td><td>Penélope Cruz</td><td>Dr. Adrián Seraphim</td><td>2026-05-27 16:00</td><td>Cons. 12 - Piso 1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="form-container">
+            <form action="citas.html" method="POST">
+                
+                <div class="form-group">
+                    <label>id_citas</label>
+                    <input type="text" name="id_citas" placeholder="CIT_00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Paciente Asignado</label>
+                    <input type="text" name="paciente_asignado" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Médico Especialista</label>
+                    <input type="text" name="medico_especialista" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha y Horario</label>
+                    <input type="text" name="fecha_horario" placeholder="AAAA-MM-DD 00:00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Consultorio de Atención</label>
+                    <input type="text" name="consultorio_atencion" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Agendar Cita</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="datos-alumno">
+                <span><strong>Alumno:</strong> Burciaga Burciaga Isaac Felipe</span>
+                <span><strong>No. Control:</strong> 24308051280514</span>
+                <span><strong>Grado y Grupo:</strong> 4ºI</span>
+                <span><strong>Especialidad:</strong> Programación</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

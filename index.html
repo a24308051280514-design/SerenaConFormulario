@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Serena - Inicio</title>
+    <style>
+        :root {
+            --verde-lima: #9acd32;
+            --azul-primario: #1e4d6b;
+            --azul-claro: #f0f7f9;
+            --gris-oscuro: #2b2d42;
+            --gris-claro: #f8f9fa;
+            --blanco: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; border-radius: 0 !important; }
+        body { background-color: var(--gris-claro); color: var(--gris-oscuro); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+
+        header { 
+            background-color: var(--verde-lima); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1); 
+            z-index: 1000; 
+        }
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 15px 20px; 
+        }
+        .logo { font-size: 26px; font-weight: 700; color: var(--azul-primario); letter-spacing: 0.5px; }
+        .logo span { color: var(--blanco); font-weight: 400; }
+        
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--blanco); }
+
+        .cuerpo { 
+            flex: 1;
+            text-align: center; 
+            padding: 160px 20px 80px 20px; 
+            background: linear-gradient(135deg, var(--azul-claro) 0%, #e9ecef 100%); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .info-panel { max-width: 800px; background: var(--blanco); padding: 50px; box-shadow: 0 4px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .info-panel h1 { font-size: 42px; color: var(--azul-primario); margin-bottom: 20px; font-weight: 600; }
+        .info-panel h2 { font-size: 20px; color: var(--azul-primario); margin-bottom: 25px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+        .info-panel p { font-size: 17px; color: #4f5d75; margin-bottom: 20px; text-align: justify; line-height: 1.8; }
+
+        .sectores-container { text-align: left; margin: 30px 0; padding: 10px 0; }
+        .sectores-container h3 { font-size: 18px; color: var(--azul-primario); margin-bottom: 15px; font-weight: 600; }
+        .sectores-lista { list-style: none; display: flex; flex-direction: column; gap: 12px; padding-left: 5px; }
+        .sectores-lista li { font-size: 16px; color: var(--gris-oscuro); }
+        .sectores-lista strong { color: var(--azul-primario); }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+        .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">Hospital <span>Serena</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="pacientes.html">Pacientes</a></li>
+                    <li><a href="personal.html">Personal</a></li>
+                    <li><a href="citas.html">Citas</a></li>
+                    <li><a href="urgencias.html">Urgencias</a></li>
+                    <li><a href="farmacia.html">Farmacia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cuerpo">
+        <div class="info-panel">
+            <h1>La seguridad es la prioridad</h1>
+            <h2>Portal de Gestión Interna</h2>
+            <p>Bienvenido al sistema de <strong>Hospital Serena</strong>. Este portal es exclusivamente para el uso de el personal, con el objetivo de administrar la atención de nuestros pacientes.</p>
+            
+            <div class="sectores-container">
+                <h3>La pagina contiene los siguientes sectores:</h3>
+                <ul class="sectores-lista">
+                    <li><strong>Pacientes:</strong> Control de hospitalización, camas asignadas, diagnósticos, historial de visitas y estado clínico.</li>
+                    <li><strong>Personal:</strong> Directorio médico.</li>
+                    <li><strong>Citas:</strong> Agenda de consultas programadas y asignación de consultorios.</li>
+                    <li><strong>Urgencias:</strong> Monitoreo de emergencias clasificado bajo prioridad.</li>
+                    <li><strong>Farmacia:</strong> Inventario de existencias y control de medicamentos.</li>
+                </ul>
+            </div>
+
+            <p style="text-align: center; font-style: italic; color: var(--azul-primario); font-weight: 600; margin-top: 10px;">Puedes usar la barra de navegación para acceder a los diferentes sectores.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="datos-alumno">
+                <span><strong>Alumno:</strong> Burciaga Burciaga Isaac Felipe</span>
+                <span><strong>No. Control:</strong> 24308051280514</span>
+                <span><strong>Grado y Grupo:</strong> 4ºI</span>
+                <span><strong>Especialidad:</strong> Programación</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Serena - Farmacia</title>
+    <style>
+        :root { 
+            --verde-lima: #9acd32; 
+            --azul-primario: #1e4d6b; 
+            --azul-claro: #f0f7f9; 
+            --gris-oscuro: #2b2d42; 
+            --gris-claro: #f8f9fa; 
+            --blanco: #ffffff; 
+            
+            --amarillo-formulario: #f4c430;
+            --amarillo-focus: rgba(244, 196, 48, 0.3);
+            --amarillo-hover: #deb322;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        .header-container *, table, th, td, footer * { border-radius: 0 !important; }
+        
+        body { background-color: var(--gris-claro); color: var(--gris-oscuro); display: flex; flex-direction: column; min-height: 100vh; }
+        
+        header { background-color: var(--verde-lima); position: fixed; top: 0; left: 0; width: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.1); z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1600px; margin: 0 auto; padding: 15px 20px; }
+        .logo { font-size: 26px; font-weight: 700; color: var(--azul-primario); }
+        .logo span { color: var(--blanco); font-weight: 400; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; }
+        nav a:hover, nav a.active { color: var(--blanco); }
+
+        .cuerpo { flex: 1; max-width: 1600px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+        
+        .document-section { background-color: var(--blanco); padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; width: 100%; }
+        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; font-size: 28px; }
+        .document-section p { color: #70757a; margin-bottom: 30px; font-size: 15px; }
+
+        .table-responsive { overflow-x: auto; width: 100%; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; border: 1px solid #e9ecef; white-space: nowrap; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid #e9ecef; }
+        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
+        tr:hover { background-color: #fdfefe; }
+        
+        .id-sector, .lote-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 15px; }
+        
+        .form-container { 
+            max-width: 550px; 
+            margin: 0 auto; 
+            width: 100%; 
+            background: var(--blanco); 
+            padding: 35px; 
+            border: 1px solid #e2e8f0; 
+            border-top: 6px solid var(--amarillo-formulario); 
+            box-shadow: 0 8px 24px rgba(244, 196, 48, 0.15); 
+            border-radius: 12px; 
+        }
+        .form-group { margin-bottom: 22px; }
+        
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; }
+        
+        input[type="text"], input[type="number"], input[type="email"], select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #e0d0dd; 
+            font-size: 14px; 
+            background-color: #faf7fa; 
+            color: #333; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+        }
+        input:focus, select:focus { outline: none; border-color: var(--amarillo-formulario); background-color: #fff; box-shadow: 0 0 5px var(--amarillo-focus); }
+
+        .btn-submit { 
+            background-color: var(--amarillo-formulario); 
+            color: var(--gris-oscuro); 
+            border: none; 
+            padding: 14px 15px; 
+            width: 100%; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            margin-top: 10px; 
+            border-radius: 6px; 
+        }
+        .btn-submit:hover { background-color: var(--amarillo-hover); }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
+        .footer-container { max-width: 1600px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+        .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">Hospital <span>Serena</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pacientes.html">Pacientes</a></li>
+                    <li><a href="personal.html">Personal</a></li>
+                    <li><a href="citas.html">Citas</a></li>
+                    <li><a href="urgencias.html">Urgencias</a></li>
+                    <li><a href="farmacia.html" class="active">Farmacia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cuerpo">
+        <section class="document-section">
+            <h2>Inventario</h2>
+            <p>Control de existencias, clasificación por categoría y seguimiento de lotes para el suministro hospitalario.</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_farmacia</th>
+                            <th>Medicamento</th>
+                            <th>Categoría</th>
+                            <th>Lote</th>
+                            <th>Existencia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="id-sector">FAR_01</td><td>Paracetamol IV 1g</td><td>Analgésico</td><td class="lote-sector">LOT-2026A</td><td>450 u</td></tr>
+                        <tr><td class="id-sector">FAR_02</td><td>Propofol 200mg/20ml</td><td>Anestésico</td><td class="lote-sector">LOT-9912B</td><td>15 u</td></tr>
+                        <tr><td class="id-sector">FAR_03</td><td>Insulina Glargina</td><td>Hipoglucemiante</td><td class="lote-sector">LOT-4412C</td><td>120 u</td></tr>
+                        <tr><td class="id-sector">FAR_04</td><td>Amoxicilina Clavulanato</td><td>Antibiótico</td><td class="lote-sector">LOT-8831A</td><td>300 u</td></tr>
+                        <tr><td class="id-sector">FAR_05</td><td>Epinefrina 1mg/ml</td><td>Cardiotónico</td><td class="lote-sector">LOT-1022X</td><td>85 u</td></tr>
+                        <tr><td class="id-sector">FAR_06</td><td>Ketorolaco 30mg</td><td>Analgesia Intensa</td><td class="lote-sector">LOT-5512K</td><td>500 u</td></tr>
+                        <tr><td class="id-sector">FAR_07</td><td>Diazepam 10mg/2ml</td><td>Controlado</td><td class="lote-sector">LOT-3011D</td><td>8 u</td></tr>
+                        <tr><td class="id-sector">FAR_08</td><td>Salbutamol Aerosol</td><td>Broncodilatador</td><td class="lote-sector">Adul-4411</td><td>210 u</td></tr>
+                        <tr><td class="id-sector">FAR_09</td><td>Omeprazol IV 40mg</td><td>Protector Gástrico</td><td class="lote-sector">LOT-6622O</td><td>600 u</td></tr>
+                        <tr><td class="id-sector">FAR_10</td><td>Losartán Potásico 50mg</td><td>Antihipertensivo</td><td class="lote-sector">LOT-7711L</td><td>350 u</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="form-container">
+            <form action="farmacia.html" method="POST">
+                
+                <div class="form-group">
+                    <label>id_farmacia</label>
+                    <input type="text" name="id_farmacia" placeholder="FAR_00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Medicamento</label>
+                    <input type="text" name="medicamento" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <input type="text" name="categoria" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Lote</label>
+                    <input type="text" name="lote" placeholder="LOT-0000X" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Existencia</label>
+                    <input type="text" name="existencia" placeholder="000 u" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Medicamento</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="datos-alumno">
+                <span><strong>Alumno:</strong> Burciaga Burciaga Isaac Felipe</span>
+                <span><strong>No. Control:</strong> 24308051280514</span>
+                <span><strong>Grado y Grupo:</strong> 4ºI</span>
+                <span><strong>Especialidad:</strong> Programación</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
