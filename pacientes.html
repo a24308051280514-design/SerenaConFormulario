@@ -12,39 +12,27 @@
             --gris-oscuro: #2b2d42; 
             --gris-claro: #f8f9fa; 
             --blanco: #ffffff; 
-                        --amarillo-formulario: #f4c430;
+            --amarillo-formulario: #f4c430;
             --amarillo-focus: rgba(244, 196, 48, 0.3);
             --amarillo-hover: #deb322;
         }
-                * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         .header-container *, table, th, td, footer * { border-radius: 0 !important; }
         
         body { background-color: var(--gris-claro); color: var(--gris-oscuro); display: flex; flex-direction: column; min-height: 100vh; }
 
         header { background-color: var(--verde-lima); position: fixed; top: 0; left: 0; width: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.1); z-index: 1000; }
-        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 15px 20px; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1600px; margin: 0 auto; padding: 15px 20px; }
         .logo { font-size: 26px; font-weight: 700; color: var(--azul-primario); }
         .logo span { color: var(--blanco); font-weight: 400; }
         nav ul { display: flex; list-style: none; gap: 20px; }
         nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; }
         nav a:hover, nav a.active { color: var(--blanco); }
 
-        .cuerpo { flex: 1; max-width: 1400px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+        .cuerpo { flex: 1; max-width: 1600px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; align-items: center; }
         
-        /* SECCIÓN DE LA TABLA */
-        .document-section { background-color: var(--blanco); padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
-        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; }
-        .document-section p { color: #70757a; margin-bottom: 25px; }
-
-        .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; border: 1px solid #e9ecef; white-space: nowrap; }
-        th, td { padding: 14px 18px; border-bottom: 1px solid #e9ecef; }
-        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
-        tr:hover { background-color: #fdfefe; }
-        
-        .id-sector, .rfc-sector { font-family: 'Courier New', monospace; color: var(--azul-primario); font-weight: bold; font-size: 14px; }
         .form-container { 
-            max-width: 500px; 
+            max-width: 550px; 
             margin: 0 auto; 
             width: 100%; 
             background: var(--blanco); 
@@ -66,7 +54,8 @@
             background-color: #faf7fa; 
             color: #333; 
             transition: all 0.3s ease; 
-            border-radius: 6px;         }
+            border-radius: 6px; 
+        }
         input:focus, select:focus { outline: none; border-color: var(--amarillo-formulario); background-color: #fff; box-shadow: 0 0 5px var(--amarillo-focus); }
 
         .btn-submit { 
@@ -80,12 +69,39 @@
             cursor: pointer; 
             transition: background-color 0.3s ease; 
             margin-top: 10px; 
-            border-radius: 6px; /* Esquinas redondeadas del botón */
+            border-radius: 6px; 
         }
         .btn-submit:hover { background-color: var(--amarillo-hover); }
 
-        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
-        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+        .btn-view {
+            background-color: var(--azul-primario);
+            color: var(--blanco);
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-view:hover { background-color: #13334a; }
+
+        .document-section { background-color: var(--blanco); padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; width: 100%; display: none; }
+        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; font-size: 28px; }
+        .document-section p { color: #70757a; margin-bottom: 30px; font-size: 15px; }
+
+        .table-responsive { overflow-x: auto; width: 100%; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; border: 1px solid #e9ecef; white-space: nowrap; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid #e9ecef; }
+        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
+        tr:hover { background-color: #fdfefe; }
+        
+        .id-sector, .rfc-sector { font-family: 'Courier New', monospace; color: var(--azul-primario); font-weight: bold; font-size: 15px; }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; margin-top: auto; }
+        .footer-container { max-width: 1600px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
         .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
     </style>
 </head>
@@ -108,66 +124,26 @@
     </header>
 
     <main class="cuerpo">
-        <section class="document-section">
-            <h2>Control de Hospitalización: Pacientes</h2>
-            <p>Lista de pacientes, asignación y datos.</p>
-            
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id_pacientes</th>
-                            <th>Nombre Completo</th>
-                            <th>Edad</th>
-                            <th>Género</th>
-                            <th>RFC</th>
-                            <th>Sangre</th>
-                            <th>Dirección</th>
-                            <th>Correo Electrónico</th>
-                            <th>Seguro Médico</th>
-                            <th>Habitación</th>
-                            <th>Diagnóstico</th>
-                            <th>Visitas Ant.</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="id-sector">PAC_01</td><td>Elena Nito</td><td>34</td><td>Femenino</td><td class="rfc-sector">ROSE7</td><td>O+</td><td>Av. de la Paz 452</td><td>elena.rostova@mail.com</td><td>Seguros AlfaSalud</td><td>102-A</td><td>Post-operatorio controlado</td><td>Sí</td><td>Alta Próxima</td></tr>
-                        <tr><td class="id-sector">PAC_02</td><td>Julián Andrés Gómez</td><td>45</td><td>Masculino</td><td class="rfc-sector">GOMJ9</td><td>A-</td><td>Calle Paseo Olivos 12</td><td>julian.gomez@mail.com</td><td>SuraMédica Global</td><td>205</td><td>Evaluación cardiológica</td><td>No</td><td>En Observación</td></tr>
-                        <tr><td class="id-sector">PAC_03</td><td>Sofía Vergara</td><td>29</td><td>Femenino</td><td class="rfc-sector">VIGS2</td><td>B+</td><td>Blvd. Independencia 890</td><td>sofia.vignolo@mail.com</td><td>Asistencia VidaPlus</td><td>104</td><td>Tratamiento de Neumonía</td><td>Sí</td><td>En Observación</td></tr>
-                        <tr><td class="id-sector">PAC_04</td><td>Mario Bautista</td><td>62</td><td>Masculino</td><td class="rfc-sector">VANM6</td><td>AB+</td><td>Calle Nogales 74</td><td>marcus.vance@mail.com</td><td>Seguros AlfaSalud</td><td>UCI-02</td><td>Monitoreo post-infarto</td><td>Sí</td><td>Crítico Estable</td></tr>
-                        <tr><td class="id-sector">PAC_05</td><td>Clara Inés Luz</td><td>71</td><td>Femenino</td><td class="rfc-sector">LUZC1</td><td>O-</td><td>Av. de los Insurgentes 105</td><td>clara.luz@mail.com</td><td>MediCare Total</td><td>108-B</td><td>Recuperación de fractura de cadera</td><td>No</td><td>Alta Próxima</td></tr>
-                        <tr><td class="id-sector">PAC_06</td><td>Mateo Ricardo Flores</td><td>12</td><td>Masculino</td><td class="rfc-sector">RICM3</td><td>O+</td><td>Calle del Sol 234</td><td>tutor.ricci@mail.com</td><td>Asistencia VidaPlus</td><td>Pediatría-3</td><td>Apendicitis aguda post-op</td><td>No</td><td>En Observación</td></tr>
-                        <tr><td class="id-sector">PAC_07</td><td>Diana Fuentes</td><td>38</td><td>Femenino</td><td class="rfc-sector">LEED4</td><td>A+</td><td>Av. de las Américas 78</td><td>diana.prince@mail.com</td><td>SuraMédica Global</td><td>Maternidad-1</td><td>Monitoreo pre-parto</td><td>Sí</td><td>En Observación</td></tr>
-                        <tr><td class="id-sector">PAC_08</td><td>Lucas Samuel Silva</td><td>55</td><td>Masculino</td><td class="rfc-sector">SILL8</td><td>B-</td><td>Privada del Roble 51</td><td>lucas.silva@mail.com</td><td>MediCare Total</td><td>201</td><td>Tratamiento de diabetes tipo II</td><td>Sí</td><td>Alta Próxima</td></tr>
-                        <tr><td class="id-sector">PAC_09</td><td>Beatriz Elena Peña</td><td>67</td><td>Femenino</td><td class="rfc-sector">PEÑB5</td><td>O+</td><td>Calle Reforma 312</td><td>beatriz.pena@mail.com</td><td>Seguros AlfaSalud</td><td>UCI-05</td><td>Insuficiencia respiratoria</td><td>No</td><td>Crítico Estable</td></tr>
-                        <tr><td class="id-sector">PAC_10</td><td>Tomás Navarro Soler</td><td>41</td><td>Masculino</td><td class="rfc-sector">NAVT2</td><td>AB-</td><td>Calle de la Fuente 99</td><td>tomas.navarro@mail.com</td><td>SuraMédica Global</td><td>110</td><td>Migraña crónica en estudio</td><td>Sí</td><td>Alta Próxima</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
         <section class="form-container">
-            <form action="pacientes.html" method="POST">
-                
+            <form id="form-pacientes">
                 <div class="form-group">
                     <label>id_pacientes</label>
-                    <input type="text" name="id_paciente" placeholder="PAC_00" required>
+                    <input type="text" id="id_paciente" placeholder="PAC_00" required>
                 </div>
 
                 <div class="form-group">
                     <label>Nombre Completo</label>
-                    <input type="text" name="nombre" required>
+                    <input type="text" id="nombre" required>
                 </div>
 
                 <div class="form-group">
                     <label>Edad</label>
-                    <input type="number" name="edad" required>
+                    <input type="number" id="edad" required>
                 </div>
 
                 <div class="form-group">
                     <label>Género</label>
-                    <select name="genero" required>
+                    <select id="genero" required>
                         <option value="" disabled selected></option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
@@ -176,12 +152,12 @@
 
                 <div class="form-group">
                     <label>RFC</label>
-                    <input type="text" name="rfc_corto" maxlength="5" required>
+                    <input type="text" id="rfc_corto" maxlength="5" required>
                 </div>
 
                 <div class="form-group">
                     <label>Sangre</label>
-                    <select name="tipo_sangre" required>
+                    <select id="tipo_sangre" required>
                         <option value="" disabled selected></option>
                         <option value="O+">O+</option>
                         <option value="O-">O-</option>
@@ -196,21 +172,48 @@
 
                 <div class="form-group">
                     <label>Dirección</label>
-                    <input type="text" name="direccion" required>
+                    <input type="text" id="direccion" required>
                 </div>
 
                 <div class="form-group">
                     <label>Correo Electrónico</label>
-                    <input type="email" name="correo" required>
+                    <input type="email" id="correo" required>
                 </div>
 
                 <div class="form-group">
                     <label>Seguro Médico</label>
-                    <input type="text" name="seguro_medico" required>
+                    <input type="text" id="seguro_medico" required>
                 </div>
 
                 <button type="submit" class="btn-submit">Enviar</button>
             </form>
+        </section>
+
+        <button id="btn-toggle-tabla" class="btn-view">Visualizar Tabla</button>
+
+        <section id="tabla-seccion" class="document-section">
+            <h2>Control de Hospitalización: Pacientes</h2>
+            <p>Lista de pacientes obtenida dinámicamente desde MongoDB Atlas.</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_pacientes</th>
+                            <th>Nombre Completo</th>
+                            <th>Edad</th>
+                            <th>Género</th>
+                            <th>RFC</th>
+                            <th>Sangre</th>
+                            <th>Dirección</th>
+                            <th>Correo Electrónico</th>
+                            <th>Seguro Médico</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-contenido">
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
@@ -225,5 +228,68 @@
         </div>
     </footer>
 
+    <script>
+        const MONGO_API_URL = 'http://localhost:5000/api/pacientes';
+
+        document.getElementById('form-pacientes').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const datos = {
+                id_paciente: document.getElementById('id_paciente').value,
+                nombre: document.getElementById('nombre').value,
+                edad: document.getElementById('edad').value,
+                genero: document.getElementById('genero').value,
+                rfc_corto: document.getElementById('rfc_corto').value,
+                tipo_sangre: document.getElementById('tipo_sangre').value,
+                direccion: document.getElementById('direccion').value,
+                correo: document.getElementById('correo').value,
+                seguro_medico: document.getElementById('seguro_medico').value
+            };
+            try {
+                const response = await fetch(MONGO_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                if(response.ok) {
+                    alert('Paciente registrado exitosamente');
+                    document.getElementById('form-pacientes').reset();
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        document.getElementById('btn-toggle-tabla').addEventListener('click', async () => {
+            const seccion = document.getElementById('tabla-seccion');
+            if (seccion.style.display === 'block') {
+                seccion.style.display = 'none';
+            } else {
+                seccion.style.display = 'block';
+                try {
+                    const response = await fetch(MONGO_API_URL);
+                    const pacientes = await response.json();
+                    const tbody = document.getElementById('tabla-contenido');
+                    tbody.innerHTML = '';
+                    pacientes.forEach(p => {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td class="id-sector">${p.id_paciente}</td>
+                                <td>${p.nombre}</td>
+                                <td>${p.edad}</td>
+                                <td>${p.genero}</td>
+                                <td class="rfc-sector">${p.rfc_corto}</td>
+                                <td>${p.tipo_sangre}</td>
+                                <td>${p.direccion}</td>
+                                <td>${p.correo}</td>
+                                <td>${p.seguro_medico}</td>
+                            </tr>
+                        `;
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
