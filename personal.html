@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Serena - Control de Citas</title>
+    <title>Hospital Serena - Personal</title>
     <style>
         :root { 
             --verde-lima: #9acd32; 
@@ -31,19 +31,7 @@
         nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; }
         nav a:hover, nav a.active { color: var(--blanco); }
 
-        .cuerpo { flex: 1; max-width: 1200px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
-        
-        .document-section { background-color: var(--blanco); padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
-        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; }
-        .document-section p { color: #70757a; margin-bottom: 25px; }
-
-        .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; border: 1px solid #e9ecef; white-space: nowrap; }
-        th, td { padding: 14px 18px; border-bottom: 1px solid #e9ecef; }
-        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
-        tr:hover { background-color: #fdfefe; }
-        
-        .id-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 14px; }
+        .cuerpo { flex: 1; max-width: 1200px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; align-items: center; }
         
         .form-container { 
             max-width: 500px; 
@@ -87,7 +75,33 @@
         }
         .btn-submit:hover { background-color: var(--amarillo-hover); }
 
-        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
+        .btn-view {
+            background-color: var(--azul-primario);
+            color: var(--blanco);
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-view:hover { background-color: #13334a; }
+
+        .document-section { background-color: var(--blanco); padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; width: 100%; display: none; }
+        .document-section h2 { color: var(--azul-primario); margin-bottom: 20px; }
+
+        .table-responsive { overflow-x: auto; width: 100%; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; border: 1px solid #e9ecef; white-space: nowrap; }
+        th, td { padding: 14px 18px; border-bottom: 1px solid #e9ecef; }
+        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
+        tr:hover { background-color: #fdfefe; }
+        
+        .id-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 14px; }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; margin-top: auto; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
         .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
     </style>
@@ -101,8 +115,8 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="pacientes.html">Pacientes</a></li>
-                    <li><a href="personal.html">Personal</a></li>
-                    <li><a href="citas.html" class="active">Citas</a></li>
+                    <li><a href="personal.html" class="active">Personal</a></li>
+                    <li><a href="citas.html">Citas</a></li>
                     <li><a href="urgencias.html">Urgencias</a></li>
                     <li><a href="farmacia.html">Farmacia</a></li>
                 </ul>
@@ -111,67 +125,74 @@
     </header>
 
     <main class="cuerpo">
-        <section class="document-section">
-            <h2>Consultas Programadas</h2>
-            <p>Asignación de consultorios y organización de horarios.</p>
-            
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id_citas</th>
-                            <th>Paciente Asignado</th>
-                            <th>Médico Especialista</th>
-                            <th>Fecha y Horario</th>
-                            <th>Consultorio de Atención</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="id-sector">CIT_01</td><td>Andrés Mendoza</td><td>Dr. Adrián Seraphim</td><td>2026-05-26 08:30</td><td>Cons. 12 - Piso 1</td></tr>
-                        <tr><td class="id-sector">CIT_02</td><td>Laura Quintanilla</td><td>Dra. Irene Valis</td><td>2026-05-26 09:15</td><td>Cons. 05 - Infantil</td></tr>
-                        <tr><td class="id-sector">CIT_03</td><td>Enrique Bunbury</td><td>Dr. Samuel Cresta</td><td>2026-05-26 10:00</td><td>Cons. 22 - Piso 2</td></tr>
-                        <tr><td class="id-sector">CIT_04</td><td>Marta Sánchez</td><td>Dra. Valeria Solano</td><td>2026-05-26 11:00</td><td>Cons. 01 - PB</td></tr>
-                        <tr><td class="id-sector">CIT_05</td><td>Carlos Baute</td><td>Dr. Gabriel Pax</td><td>2026-05-26 12:00</td><td>Cons. 30 - Salud M.</td></tr>
-                        <tr><td class="id-sector">CIT_06</td><td>Julia Roberts</td><td>Dra. Amara Lind</td><td>2026-05-27 08:00</td><td>Cons. 14 - Piso 1</td></tr>
-                        <tr><td class="id-sector">CIT_07</td><td>Pedro Almodóvar</td><td>Dr. Roberto Shin</td><td>2026-05-27 09:30</td><td>Cons. 18 - Piso 2</td></tr>
-                        <tr><td class="id-sector">CIT_08</td><td>Cecilia Roth</td><td>Dra. Celia Cruzado</td><td>2026-05-27 10:45</td><td>Cons. 08 - PB</td></tr>
-                        <tr><td class="id-sector">CIT_09</td><td>Ricardo Darín</td><td>Dr. Julián Merino</td><td>2026-05-27 11:30</td><td>Cons. 11 - Piso 1</td></tr>
-                        <tr><td class="id-sector">CIT_10</td><td>Penélope Cruz</td><td>Dr. Adrián Seraphim</td><td>2026-05-27 16:00</td><td>Cons. 12 - Piso 1</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
         <section class="form-container">
-            <form action="citas.html" method="POST">
-                
+            <form id="form-personal">
                 <div class="form-group">
-                    <label>id_citas</label>
-                    <input type="text" name="id_citas" placeholder="CIT_00" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Paciente Asignado</label>
-                    <input type="text" name="paciente_asignado" required>
+                    <label>id_medicos</label>
+                    <input type="text" id="id_medicos" placeholder="MED_00" required>
                 </div>
 
                 <div class="form-group">
                     <label>Médico Especialista</label>
-                    <input type="text" name="medico_especialista" required>
+                    <input type="text" id="medico_especialista" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Fecha y Horario</label>
-                    <input type="text" name="fecha_horario" placeholder="AAAA-MM-DD 00:00" required>
+                    <label>Especialidad</label>
+                    <input type="text" id="especialidad" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Consultorio de Atención</label>
-                    <input type="text" name="consultorio_atencion" required>
+                    <label>Turno</label>
+                    <select id="turno" required>
+                        <option value="" disabled selected></option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noche">Noche</option>
+                        <option value="Rotativo">Rotativo</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="btn-submit">Agendar Cita</button>
+                <div class="form-group">
+                    <label>Contacto Interno</label>
+                    <input type="text" id="contacto_interno" placeholder="Ext. 000" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Disponibilidad</label>
+                    <select id="disponibilidad" required>
+                        <option value="" disabled selected></option>
+                        <option value="Disponible">Disponible</option>
+                        <option value="En Consulta">En Consulta</option>
+                        <option value="En Cirugía">En Cirugía</option>
+                        <option value="En Guardia">En Guardia</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Médico</button>
             </form>
+        </section>
+
+        <button id="btn-toggle-tabla" class="btn-view">Visualizar Tabla</button>
+
+        <section id="tabla-seccion" class="document-section">
+            <h2>Personal Médico</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id_medicos</th>
+                            <th>Médico Especialista</th>
+                            <th>Especialidad</th>
+                            <th>Turno</th>
+                            <th>Contacto Interno</th>
+                            <th>Disponibilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-contenido">
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
@@ -186,5 +207,62 @@
         </div>
     </footer>
 
+    <script>
+        const MONGO_API_URL = 'http://localhost:5000/api/personal';
+
+        document.getElementById('form-personal').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const datos = {
+                id_medicos: document.getElementById('id_medicos').value,
+                medico_especialista: document.getElementById('medico_especialista').value,
+                especialidad: document.getElementById('especialidad').value,
+                turno: document.getElementById('turno').value,
+                contacto_interno: document.getElementById('contacto_interno').value,
+                disponibilidad: document.getElementById('disponibilidad').value
+            };
+            try {
+                const response = await fetch(MONGO_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                if(response.ok) {
+                    alert('Médico registrado exitosamente en MongoDB');
+                    document.getElementById('form-personal').reset();
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        document.getElementById('btn-toggle-tabla').addEventListener('click', async () => {
+            const seccion = document.getElementById('tabla-seccion');
+            if (seccion.style.display === 'block') {
+                seccion.style.display = 'none';
+            } else {
+                seccion.style.display = 'block';
+                try {
+                    const response = await fetch(MONGO_API_URL);
+                    const personal = await response.json();
+                    const tbody = document.getElementById('tabla-contenido');
+                    tbody.innerHTML = '';
+                    personal.forEach(m => {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td class="id-sector">${m.id_medicos}</td>
+                                <td>${m.medico_especialista}</td>
+                                <td>${m.especialidad}</td>
+                                <td>${m.turno}</td>
+                                <td>${m.contacto_interno}</td>
+                                <td>${m.disponibilidad}</td>
+                            </tr>
+                        `;
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
