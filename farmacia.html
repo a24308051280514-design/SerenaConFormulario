@@ -31,19 +31,7 @@
         nav a { text-decoration: none; color: var(--azul-primario); font-weight: 600; font-size: 15px; }
         nav a:hover, nav a.active { color: var(--blanco); }
 
-        .cuerpo { flex: 1; max-width: 1600px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
-        
-        .document-section { background-color: var(--blanco); padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; width: 100%; }
-        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; font-size: 28px; }
-        .document-section p { color: #70757a; margin-bottom: 30px; font-size: 15px; }
-
-        .table-responsive { overflow-x: auto; width: 100%; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; border: 1px solid #e9ecef; white-space: nowrap; }
-        th, td { padding: 16px 20px; border-bottom: 1px solid #e9ecef; }
-        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
-        tr:hover { background-color: #fdfefe; }
-        
-        .id-sector, .lote-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 15px; }
+        .cuerpo { flex: 1; max-width: 1600px; width: 100%; margin: 140px auto 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; align-items: center; }
         
         .form-container { 
             max-width: 550px; 
@@ -87,7 +75,34 @@
         }
         .btn-submit:hover { background-color: var(--amarillo-hover); }
 
-        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; }
+        .btn-view {
+            background-color: var(--azul-primario);
+            color: var(--blanco);
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-view:hover { background-color: #13334a; }
+
+        .document-section { background-color: var(--blanco); padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; width: 100%; display: none; }
+        .document-section h2 { color: var(--azul-primario); margin-bottom: 10px; font-size: 28px; }
+        .document-section p { color: #70757a; margin-bottom: 30px; font-size: 15px; }
+
+        .table-responsive { overflow-x: auto; width: 100%; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; border: 1px solid #e9ecef; white-space: nowrap; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid #e9ecef; }
+        th { background-color: var(--azul-claro); color: var(--azul-primario); font-weight: 600; border-bottom: 2px solid #cbd5e1; }
+        tr:hover { background-color: #fdfefe; }
+        
+        .id-sector, .lote-sector { font-family: 'Courier New', monospace; color: #1e4d6b; font-weight: bold; font-size: 15px; }
+
+        footer { background-color: var(--azul-primario); color: var(--blanco); padding: 40px 20px; font-size: 15px; width: 100%; margin-top: auto; }
         .footer-container { max-width: 1600px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
         .datos-alumno { display: flex; flex-direction: column; gap: 8px; width: 100%; }
     </style>
@@ -111,9 +126,42 @@
     </header>
 
     <main class="cuerpo">
-        <section class="document-section">
+        <section class="form-container">
+            <form id="form-farmacia">
+                <div class="form-group">
+                    <label>id_farmacia</label>
+                    <input type="text" id="id_farmacia" placeholder="FAR_00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Medicamento</label>
+                    <input type="text" id="medicamento" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <input type="text" id="categoria" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Lote</label>
+                    <input type="text" id="lote" placeholder="LOT-0000X" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Existencia</label>
+                    <input type="text" id="existencia" placeholder="000 u" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Medicamento</button>
+            </form>
+        </section>
+
+        <button id="btn-toggle-tabla" class="btn-view">Visualizar Tabla</button>
+
+        <section id="tabla-seccion" class="document-section">
             <h2>Inventario</h2>
-            <p>Control de existencias, clasificación por categoría y seguimiento de lotes para el suministro hospitalario.</p>
+            <p>Control de existencias e insumos farmacéuticos sincronizado en tiempo real desde MongoDB Atlas.</p>
             
             <div class="table-responsive">
                 <table>
@@ -126,52 +174,10 @@
                             <th>Existencia</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td class="id-sector">FAR_01</td><td>Paracetamol IV 1g</td><td>Analgésico</td><td class="lote-sector">LOT-2026A</td><td>450 u</td></tr>
-                        <tr><td class="id-sector">FAR_02</td><td>Propofol 200mg/20ml</td><td>Anestésico</td><td class="lote-sector">LOT-9912B</td><td>15 u</td></tr>
-                        <tr><td class="id-sector">FAR_03</td><td>Insulina Glargina</td><td>Hipoglucemiante</td><td class="lote-sector">LOT-4412C</td><td>120 u</td></tr>
-                        <tr><td class="id-sector">FAR_04</td><td>Amoxicilina Clavulanato</td><td>Antibiótico</td><td class="lote-sector">LOT-8831A</td><td>300 u</td></tr>
-                        <tr><td class="id-sector">FAR_05</td><td>Epinefrina 1mg/ml</td><td>Cardiotónico</td><td class="lote-sector">LOT-1022X</td><td>85 u</td></tr>
-                        <tr><td class="id-sector">FAR_06</td><td>Ketorolaco 30mg</td><td>Analgesia Intensa</td><td class="lote-sector">LOT-5512K</td><td>500 u</td></tr>
-                        <tr><td class="id-sector">FAR_07</td><td>Diazepam 10mg/2ml</td><td>Controlado</td><td class="lote-sector">LOT-3011D</td><td>8 u</td></tr>
-                        <tr><td class="id-sector">FAR_08</td><td>Salbutamol Aerosol</td><td>Broncodilatador</td><td class="lote-sector">Adul-4411</td><td>210 u</td></tr>
-                        <tr><td class="id-sector">FAR_09</td><td>Omeprazol IV 40mg</td><td>Protector Gástrico</td><td class="lote-sector">LOT-6622O</td><td>600 u</td></tr>
-                        <tr><td class="id-sector">FAR_10</td><td>Losartán Potásico 50mg</td><td>Antihipertensivo</td><td class="lote-sector">LOT-7711L</td><td>350 u</td></tr>
+                    <tbody id="tabla-contenido">
                     </tbody>
                 </table>
             </div>
-        </section>
-
-        <section class="form-container">
-            <form action="farmacia.html" method="POST">
-                
-                <div class="form-group">
-                    <label>id_farmacia</label>
-                    <input type="text" name="id_farmacia" placeholder="FAR_00" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Medicamento</label>
-                    <input type="text" name="medicamento" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Categoría</label>
-                    <input type="text" name="categoria" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Lote</label>
-                    <input type="text" name="lote" placeholder="LOT-0000X" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Existencia</label>
-                    <input type="text" name="existencia" placeholder="000 u" required>
-                </div>
-
-                <button type="submit" class="btn-submit">Registrar Medicamento</button>
-            </form>
         </section>
     </main>
 
@@ -186,5 +192,60 @@
         </div>
     </footer>
 
+    <script>
+        const MONGO_API_URL = 'http://localhost:5000/api/farmacia';
+
+        document.getElementById('form-farmacia').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const datos = {
+                id_farmacia: document.getElementById('id_farmacia').value,
+                medicamento: document.getElementById('medicamento').value,
+                categoria: document.getElementById('categoria').value,
+                lote: document.getElementById('lote').value,
+                existencia: document.getElementById('existencia').value
+            };
+            try {
+                const response = await fetch(MONGO_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                if(response.ok) {
+                    alert('Medicamento registrado en el inventario');
+                    document.getElementById('form-farmacia').reset();
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        document.getElementById('btn-toggle-tabla').addEventListener('click', async () => {
+            const seccion = document.getElementById('tabla-seccion');
+            if (seccion.style.display === 'block') {
+                seccion.style.display = 'none';
+            } else {
+                seccion.style.display = 'block';
+                try {
+                    const response = await fetch(MONGO_API_URL);
+                    const medicamentos = await response.json();
+                    const tbody = document.getElementById('tabla-contenido');
+                    tbody.innerHTML = '';
+                    medicamentos.forEach(m => {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td class="id-sector">${m.id_farmacia}</td>
+                                <td>${m.medicamento}</td>
+                                <td>${m.categoria}</td>
+                                <td class="lote-sector">${m.lote}</td>
+                                <td>${m.existencia}</td>
+                            </tr>
+                        `;
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
